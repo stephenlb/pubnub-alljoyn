@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- let's be friends! http://twitter.com/PubNub -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name=apple-mobile-web-app-capable content=yes>
+    <meta name=apple-mobile-web-app-status-bar-style content=black>
+    <meta name="description" content="PubNub Doorbell">
+    <meta name="author" content="PubNub">
+    <title>PubNub Doorbell (User)</title>
+    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="dist/css/styles.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- DOOR BELL (USER) -->
+<!-- DOOR BELL (USER) -->
+<!-- DOOR BELL (USER) -->
+<div class="container text-center">
+    <div id="ring-status">
+        <h3>READ ALOUD</h3>
+        <span id="checkstatus" class="glyphicon glyphicon-barcode"></span>
+    </div>
+    <h2 id="ring-code">####</h2>
+    <img src="pubnub.png" alt="PubNub" width="172" height="38">
+</div>
+
+<script src="https://pubnub.a.ssl.fastly.net/pubnub.min.js"></script>
+<script src="dist/js/animate.js"></script>
+<script src="dist/js/faker.js"></script>
+<script>(function(){
+var pubnub = PUBNUB.init({})
+,   code   = generate_code();
+
+// SET RING CODE
+pubnub.$('ring-code').innerHTML = code;
+
+// RECEIVE DOORBELL RING
+pubnub.subscribe({ channel : code, message : receive_access });
+
+// SEND RING
+setInterval( function() { send_ring(code) }, 1000 );
+send_ring(code);
+
+// SEND RING
+function send_ring(code) {
+    pubnub.publish({ channel : 'doorbell', message : code });
+}
+
+// RECEIVE ACCESS EVENT AND PROCESS ONLY ONCE
+function receive_access(code) {
+    pubnub.$('ring-status').innerHTML =
+        '<h1>ACCESS GRANTED</h1>' + 
+        '<iframe src="http://www2.pubnub.com/l/28622/2014-01-28/8zlmw" width="100%" height="156" type="text/html" frameborder="0" allowTransparency="true" style="border: 0"></iframe>';
+
+    pubnub.css( document.getElementsByTagName('body')[0], {
+        background : '#0f0',
+        color      : '#fff'
+    } );
+}
+
+// GENERATE ACCESS CODE
+//function generate_code() { return rnd()+rnd()+rnd()+rnd() }
+function generate_code() {
+    return (
+        Faker.random.bs_adjective() + " " +
+        Faker.random.bs_buzz()
+    ).toUpperCase();
+}
+function rnd() { return String.fromCharCode(65+Math.floor(Math.random()*26)) }
+})();</script>
+<script>
+piAId='29622';
+piCId='23596';
+(function(){
+function async_load(){
+var s=document.createElement('script');s.type='text/javascript';
+s.src=('https:'==document.location.protocol?'https://pi':'http://cdn')
++'.pardot.com/pd.js';
+var c=document.getElementsByTagName('script')[0];
+c.parentNode.insertBefore(s,c);
+}
+if(window.attachEvent){window.attachEvent('onload',async_load);}
+else{window.addEventListener('load',async_load,false);}
+})();
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create','UA-16927549-1');
+ga('send','pageview');
+</script>
+
+</body>
+</html>
