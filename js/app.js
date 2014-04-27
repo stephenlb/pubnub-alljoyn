@@ -8,12 +8,16 @@ notify.area = PUBNUB.$('notification');
 function notify( icon, text ) {
     animate( notify.area, [
         { 'd' : 0.5, 'opacity' : 1.0 },
-        { 'd' : 2.0, 'opacity' : 1.0 },
-        { 'd' : 1.0, 'opacity' : 0.0 }
+        { 'd' : 0.1, 'color'   : '#fff' },
+        { 'd' : 0.1, 'color'   : '#000' },
+        { 'd' : 0.2, 'color'   : '#fff' },
+        { 'd' : 0.1, 'color'   : '#000' },
+        { 'd' : 0.1, 'color'   : '#fff' },
+        { 'd' : 0.1, 'color'   : '#000' },
+        { 'd' : 0.1, 'color'   : '#fff' },
+        { 'd' : 1.0, 'opacity' : 1.0 }
     ] );
 }
-
-// setTimeout( notify, 3000 );
 
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 // Circle Meters
@@ -31,13 +35,15 @@ function rnd(n) {
 setInterval( function() { meter( 'circle-meter-1', 90+rnd(70) ) }, 1000 );
 setInterval( function() { meter( 'circle-meter-2', 90+rnd(70) ) }, 2000 );
 setInterval( function() { meter( 'circle-meter-3', 90+rnd(70) ) }, 1000 );
+setInterval( function() { meter( 'circle-meter-4', 90+rnd(70) ) }, 1000 );
+setInterval( function() { meter( 'circle-meter-5', 90+rnd(70) ) }, 1000 );
 
 
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 // Watch Receiver
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 PUBNUB.subscribe({
-    channel : 'a',
+    channel : 'alljoyn-pub,alljoyn',
     message : watch_receiver
 });
 
@@ -45,13 +51,17 @@ PUBNUB.subscribe({
 watch_receiver.watch = PUBNUB.$('watch-out');
 function watch_receiver(data) {
     watch_receiver.watch.innerHTML = data;
+    notify();
+    sounds.play('media/notify');
 }
 
-PUBNUB.bind( 'mousedown,touchstart', watch_receiver.watch, function() {
-    PUBNUB.publish({
-        channel : 'alljoyn-pubnub',
-        message : 'HHhahahahaha'
-    });
+watch_receiver.num = 0;
+PUBNUB.bind( 'mousedown,touchstart', PUBNUB.$('watch-button'), function() {
+    var message = ' PubNub AllJoyn - ' + ++watch_receiver.num;
+
+    PUBNUB.publish({ channel : 'a', message : message });
+    PUBNUB.publish({ channel : 'alljoyn-pub', message : message });
+
 } );
 
 
