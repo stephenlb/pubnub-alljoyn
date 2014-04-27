@@ -12,19 +12,86 @@
     <title>PubNub AllJoyn Bridge</title>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <!--<link href="css/font-awesome.min.css" rel="stylesheet">-->
     <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
 
+<!-- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- -->
+<!-- PubNub Circle Meters -->
+<!-- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- -->
+<div class="margin-top"></div>
 <div class="container">
-    <div id="ring-status">
-        <h3>READ ALOUD</h3>
-        <span id="checkstatus" class="glyphicon glyphicon-barcode"></span>
+    <div class="row">
+
+        <div class="col-xs-2"></div>
+        <div class="col-xs-3"><div class="relative">
+            <div class="circle circle-mask">
+                <div id="circle-meter-1" class="circle-meter"></div>
+            </div>
+            <div class="circle-icon">
+                <div class="glyphicon glyphicon-phone"></div>
+            </div>
+        </div></div>
+
+        <div class="col-xs-3"><div class="relative">
+            <div class="circle circle-mask">
+                <div id="circle-meter-2" class="circle-meter"></div>
+            </div>
+            <div class="circle-icon">
+                <div class="glyphicon glyphicon-dashboard"></div>
+            </div>
+        </div></div>
+
+        <div class="col-xs-3"><div class="relative">
+            <div class="circle circle-mask">
+                <div id="circle-meter-3" class="circle-meter"></div>
+            </div>
+            <div class="circle-icon">
+                <div class="glyphicon glyphicon-facetime-video"></div>
+            </div>
+        </div></div>
+
     </div>
 </div>
 
-<img src="media/pubnub.png" alt="PubNub" width="172" height="38">
+<!-- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- -->
+<!-- PubNub Alljoyn Logo -->
+<!-- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- -->
+<div class="container text-center footer">
+    <img src="media/pubnub.png" alt="PubNub" width="172" height="38">
+    <img src="media/alljoin.png" alt="AllJoyn" width="200" height="120">
+</div>
+
+<!-- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- -->
+<!-- Watch Screen -->
+<!-- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- -->
+<div class="container">
+    <div class="row">
+        <div class="col-xs-2"></div>
+        <div class="col-xs-4"><div class="relative">
+            <div class="watch-img"></div>
+            <div id="watch-out">
+                &nbsp; Connecting...
+            </div>
+        </div></div>
+        <div class="col-xs-1"></div>
+        <div class="col-xs-4">
+            <div id="watch-button">
+                <div class="glyphicon glyphicon-off"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- -->
+<!-- Notification Container -->
+<!-- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- -->
+<div class="container">
+    <div id="notification" class="notification">
+        <div class="glyphicon glyphicon-exclamation-sign"></div>
+    </div>
+</div>
 
 <script src="js/pubnub.min.js"></script>
 <script src="js/animate.js"></script>

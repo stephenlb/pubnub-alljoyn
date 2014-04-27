@@ -1,0 +1,115 @@
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+/* Circle Meters */
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+.circle-mask {
+    -webkit-mask-box-image: url(../media/guage-mask.png);
+}
+.circle,
+.circle-meter,
+.circle-icon {
+    width: 200px;
+    height: 200px;
+    line-height: 220px;
+    font-size: 80px;
+    color: #2d2e2d;
+    text-align: center;
+}
+.circle {
+    position: absolute;
+    top: 0px;
+    background: #dadcde;
+}
+.circle-meter {
+    position: absolute;
+    top: 170px;
+    left: 200px;
+    width: 690px;
+    height: 690px;
+    background: #ff9900;
+    -webkit-transform: rotate(120deg);
+    -webkit-transform-origin: 0% 0%;
+    -webkit-transition: all 5.0s;
+}
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+/* Watch Button */
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+#watch-button {
+    margin-top: 40px;
+    cursor: pointer;
+    width: 200px;
+    height: 200px;
+    line-height: 230px;
+    font-size: 120px;
+    text-align: center;
+    border-radius: 500px;
+    background: rgba(200,200,200,0.4);
+}
+#watch-button:hover {
+    background: rgba(255,200,10,0.8);
+}
+#watch-button:active {
+    background: rgba(255,255,10,1.0);
+}
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+/* Watch Receiver */
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+.watch-img {
+    top: 0px;
+    left: 0px;
+    position: absolute;
+    width: 300px;
+    height: 340px;
+    background: url(../media/watch.jpg);
+    background-size: 280px;
+    background-repeat: no-repeat;
+}
+#watch-out {
+    top: 70px;
+    left: 47px;
+    position: absolute;
+    width: 151px;
+    height: 98px;
+    background: rgba(200,200,200,1.0);
+    -webkit-transform: rotateY(40deg) rotateX(-18deg) rotateZ(6deg);
+}
+
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+/* Notifications */
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+.notification {
+    position: fixed;
+    opacity: 0.0;
+    top: 10px;
+    left: 35%;
+    margin: 0px auto;
+    width: 300px;
+    height: 300px;
+    line-height: 350px;
+    text-align: center;
+    font-size: 200px;
+
+    color: rgba(255,255,255,0.9);
+    background: rgba(200,200,200,0.9);
+    border-radius: 20px;
+}
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+/* Footer */
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+.footer {
+    margin-top: 0px;
+}
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+/* Utilities */
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+.relative {
+    position: relative;
+}
+.margin-top {
+    margin-top: 40px;
+}
+
